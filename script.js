@@ -14,6 +14,24 @@ window.addEventListener("scroll", () => {
   });
 });
 
+// Mobile navigation toggle
+const navToggle = document.getElementById("navToggle");
+const navbar = document.getElementById("navbar");
+
+function closeMobileNav() {
+  navbar.classList.remove("open");
+  navToggle.setAttribute("aria-expanded", "false");
+}
+
+navToggle.addEventListener("click", () => {
+  const open = navbar.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", open);
+});
+
+navLinks.querySelectorAll("a").forEach((a) => {
+  a.addEventListener("click", closeMobileNav);
+});
+
 // Scroll reveal animation
 const revealEls = document.querySelectorAll(
   ".section-head, .about-grid > *, .skill-item, .project-card, .exp-row, .contact-card"
